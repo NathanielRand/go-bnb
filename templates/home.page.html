@@ -2,13 +2,40 @@
 
 {{define "content"}}
 <div class="container">
+    <div class="row">
+        <label class="text-field mdc-text-field mdc-text-field--filled">
+            <span class="mdc-text-field__ripple"></span>
+            <span class="mdc-floating-label" id="my-label-id">Hint text</span>
+            <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+            <span class="mdc-line-ripple"></span>
+        </label>
+    </div>
+
+
 		<div class="row">
 			<div class="col">
-				<h1>Go BnB - Booking Aplication</h1>
+				<h1>Go BnB - Booking</h1>
 				<h2>
 					Welcome to our B&B!
 				</h2>
 			</div>
-		</div>
-	</div>
+        </div>
+        <div class="row">
+            <button class="mdc-button mdc-button--raised">
+  <span class="mdc-button__ripple"></span>
+  <i class="material-icons mdc-button__icon" aria-hidden="true"
+    >bookmark</i
+  >
+  <span class="mdc-button__label">Contained Button plus Icon</span>
+</button>
+        </div>
+        <div class="row">
+            <img src="/static/images/home_1.jpg" height="auto" width="100%">
+        </div>
+    </div>
+    <div class="row">
+        <div class="mdc-card mdc-card--outlined">
+        <!-- ... content ... -->
+        </div>
+    </div>
 {{end}}
