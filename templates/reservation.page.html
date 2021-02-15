@@ -1,0 +1,114 @@
+{{template "base" .}}
+
+{{define "content"}}
+    <div class="container">
+		<div class="row my-5">
+			<div class="col">
+                <h1 class="display-3">RESERVATION</h1>
+                <p class="fs-4 fw-light text-uppercase">Check availability and place your reservation below.</p>
+			</div>
+        </div>
+        <div class="row my-5">
+            <form action="/reserve" method="GET" novalidate class="needs-validation" autocomplete="off">
+                <div class="col-lg-6 offset-lg-3">
+                    <div id="foo">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text text-muted fs-5">DATES</span>
+                            <input type="text" name="start" aria-label="First name" class="form-control form-control-lg" placeholder="ARRIVAL" required >
+                            <input type="text" name="end" aria-label="Last name" class="form-control form-control-lg" placeholder="DEPARTURE" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-outline-primary">SEARCH AVAILABILITY</button>
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-center">
+                <button id="alert-test" class="btn btn-outline-secondary">TEST ALERT</button>
+            </div>            
+        </div>
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="/static/images/cliffside.jpg" class="card-img-top" alt="...">
+                    <div class="card-body text-center">
+                        <h5 class="card-title display-6">OCEANSPRAY </h5>
+                        <p class="card-text fs-5 fw-light">This is a longer card with supporting text below as a natural lead-in.</p>
+                        <h6 class="fs-4 mt-4 fw-light"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                        <div class="d-grid col-10 mx-auto mt-5 mb-3">
+                            <button class="btn  btn-outline-primary fs-5 fw-light" type="button">CHECK AVAILABILITY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center text-muted my-5">
+            <h2 class="display-6">END</h2>
+        </div>
+	</div>
+{{end}}

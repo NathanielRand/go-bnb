@@ -1,41 +1,65 @@
 {{template "base" .}}
 
 {{define "content"}}
+
+<style>
+    .carousel-control-next,
+    .carousel-control-prev /*, .carousel-indicators */ {
+        font-size: 2rem!important;
+        
+    }
+
+    .carousel-text {
+        text-shadow: 3px 3px 2px #000;       
+    }
+</style>
+
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/home_1.jpg" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="display-3 carousel-text">WELCOME</h2>
+        <p class="display-6 carousel-text">HOUSE ON THE HILL</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/living_1.jpg" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="display-3 carousel-text">KITCHEN</h2>
+        <p class="display-6 carousel-text">HOUSE ON THE HILL</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/static/images/living_2.jpg" class="d-block w-100 img-fluid" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="display-3 carousel-text">LOUNGE</h2>
+        <p class="display-6 carousel-text">HOUSE ON THE HILL</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev"  type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
+    <span aria-hidden="true"><i class="bi bi-arrow-left-circle-fill"></i></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
+    <span aria-hidden="true"><i class="bi bi-arrow-right-circle-fill"></i></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 <div class="container">
     <div class="row">
-        <label class="text-field mdc-text-field mdc-text-field--filled">
-            <span class="mdc-text-field__ripple"></span>
-            <span class="mdc-floating-label" id="my-label-id">Hint text</span>
-            <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-            <span class="mdc-line-ripple"></span>
-        </label>
+        <div class="col">
+            <h1 class="text-center mt-5">Go BnB</h1>
+            <p>Exclusive beachside Bed and Breakfast for luxury escapes.</p>
+        </div>
     </div>
+</div>
 
-
-		<div class="row">
-			<div class="col">
-				<h1>Go BnB - Booking</h1>
-				<h2>
-					Welcome to our B&B!
-				</h2>
-			</div>
-        </div>
-        <div class="row">
-            <button class="mdc-button mdc-button--raised">
-  <span class="mdc-button__ripple"></span>
-  <i class="material-icons mdc-button__icon" aria-hidden="true"
-    >bookmark</i
-  >
-  <span class="mdc-button__label">Contained Button plus Icon</span>
-</button>
-        </div>
-        <div class="row">
-            <img src="/static/images/home_1.jpg" height="auto" width="100%">
-        </div>
-    </div>
-    <div class="row">
-        <div class="mdc-card mdc-card--outlined">
-        <!-- ... content ... -->
-        </div>
-    </div>
 {{end}}

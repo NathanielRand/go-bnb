@@ -1,0 +1,45 @@
+{{define "navbar"}}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="container-fluid">
+        <a class="navbar-brand text-primary fs-3 fw-light" href="/"><span><i class="bi bi-house align-text-bottom mx-2"></i> HOUSE ON THE HILL</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto text-center">
+                <li class="nav-item mx-3 my-2">
+                    <a class="nav-link text-primary active" aria-current="page" href="/">WELCOME</a>
+                </li>
+                <li class="nav-item mx-3 my-2">
+                    <a class="nav-link text-primary" href="/about">ABOUT</a>
+                </li>
+                <li class="nav-item mx-3 my-2">
+                    <a class="nav-link text-primary" href="/contact">CONTACT</a>
+                </li>
+                <li class="nav-item dropdown mx-3 my-2">
+                    <a class="nav-link text-primary" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ROOMS
+                        <i class="bi bi-chevron-down ms-1"></i>                        
+                    </a>
+                    <ul class="dropdown-menu text-center py-n5" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/tidal">TIDAL</a></li>
+                        <li><hr class="dropdown-divider text-primary"></li>
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/cliffside">CLIFFSIDE</a></li>
+                        <li><hr class="dropdown-divider text-primary"></li>
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/oceanspray">OCEANSPRAY</a></li>
+                        <li><hr class="dropdown-divider text-primary"></li>
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/seabreeze">SEABREEZE</a></li>
+                        <li><hr class="dropdown-divider text-primary"></li>
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/dawn">DAWN</a></li>
+                        <li><hr class="dropdown-divider text-primary"></li>
+                        <li><a class="dropdown-item text-primary my-1" href="/rooms/sunset">SUNSET</a></li>
+                    </ul>
+                </li>
+                <a href="/reserve" class="btn btn-outline-primary mx-4 my-2 fs-6 rounded shadow">RESERVE ROOM</a>
+            </ul>
+            
+        </div>
+    </div>
+</nav>
+{{end}}

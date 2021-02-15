@@ -1,0 +1,87 @@
+{{template "base" .}}
+
+{{define "content"}}
+
+<div class="container">
+    <div class="row text-center mt-5">
+        <div class="col">
+            <h1 class="display-1">CLIFFSIDE</h1>
+            <h6 class="display-6 text-muted fw-light">ROOM</h6>
+            <p class="lead mt-4">Overlook our neighboring cliffside as you enjoy the peaceful atmosphere.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <img src="/static/images/cliffside.jpg" class="img-fluid rounded img-thumbnail mt-5 mx-auto d-block" alt="cliffside">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="d-grid col-lg-4 col-md-6 mt-4 mb-4">
+            <button class="btn btn-primary btn-lg" type="button">CHECK AVAILABILITY</button>
+        </div>
+    </div>
+    <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="display-6"></i> $249 <small class="text-muted"> / NIGHT</small></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center justify-content-center mt-5 mb-5">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h4 class="display-4 mt-5">Amenities</h4>
+            <div class="card p-3 mt-4">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-3">Queen Bed <small class="text-muted">(MAX OCCUPANCY OF 2)</small></li>
+                    <li class="list-group-item p-3">Meals by an Award Winning Chef</li>
+                    <li class="list-group-item p-3">Digital Key <small class="text-muted">(MOBILE APP)</small></li>
+                    <li class="list-group-item p-3">Heated Floors</li>
+                    <li class="list-group-item p-3">24/7 Concierge</li>
+                    <li class="list-group-item p-3">Laundry Service</li>
+                    <li class="list-group-item p-3">WiFi / Cable TV</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <h4 class="display-4 mt-5">Location</h4>
+            <div class="card p-3 mt-4">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5 text-center">
+        <h4 class="display-4">Reviews</h4>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card mt-4">
+                <div class="card-header">
+                    Quote
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="card mt-4">
+                <div class="card-header">
+                    Quote
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                    <p>A well-known quote, contained in a blockquote element.</p>
+                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+{{end}}

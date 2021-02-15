@@ -19,6 +19,19 @@ func routes(app *config.AppConfig) http.Handler {
 	// Routes
 	mux.Get("/", handlers.Repo.Home)
 	mux.Get("/about", handlers.Repo.About)
+	mux.Get("/contact", handlers.Repo.Contact)
+
+	// Routes - Rooms
+	mux.Get("/rooms/tidal", handlers.Repo.Tidal)
+	mux.Get("/rooms/cliffside", handlers.Repo.Cliffside)
+	mux.Get("/rooms/oceanspray", handlers.Repo.Oceanspray)
+	mux.Get("/rooms/seabreeze", handlers.Repo.Seabreeze)
+	mux.Get("/rooms/dawn", handlers.Repo.Dawn)
+	mux.Get("/rooms/sunset", handlers.Repo.Sunset)
+
+	// Routes - Reserve
+	mux.Get("/reserve", handlers.Repo.Reservation)
+	mux.Get("/reserve-cliffside", handlers.Repo.Cliffside)
 
 	// Serve static files
 	fileServer := http.FileServer(http.Dir("./static/"))
