@@ -4,7 +4,7 @@
 Stack:
 - Go v1.15
 - Vanilla JS
-- Bootstrap
+- Bootstrap 5
   
 Dependencies:
 - [chi router](https://github.com/go-chi/chi)
