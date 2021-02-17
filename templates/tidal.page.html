@@ -117,10 +117,36 @@
             attention.custom({
                 title: "SELECT DATES", 
                 msg: html,
+
+                willOpen: () => {
+                    const elem = document.getElementById('reservation-date-modal');
+                    const rp = new DateRangePicker(elem, {
+                        buttonClass: 'btn btn-outline-primary mx-auto my-2',
+                        clearBtn: true,
+                        todayBtn: true,
+                        todayBtnMode: 1,
+                        format: 'yyyy-mm-dd',
+                        showOnFocus: true,
+                    })
+                },
+
+                didOpen: () => {
+                    document.getElementById('start').removeAttribute('disabled');
+                    document.getElementById('end').removeAttribute('disabled');
+                },
+                
                 callback: function(formValues) {
                     console.log("called");
 
-                    fetch('/search-availability-json')
+                    let form = document.getElementById('check-availability-form');
+                    let formData = new FormData(form);
+                    formData.append("csrf_token", "{{.CSRFToken}}")
+
+
+                    fetch('/search-availability-json', {
+                        method: "POST",
+                        body: formData,
+                    })
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
