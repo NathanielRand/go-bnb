@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <!-- Custom CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 
     <!-- Datepicker: https://github.com/mymth/vanillajs-datepicker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.2/dist/css/datepicker.min.css">
@@ -39,7 +39,7 @@
     <style>
         /* override styles here */
         .notie-container {
-        box-shadow: none;
+            box-shadow: none;
         }
     </style>
 
@@ -82,19 +82,6 @@
 	<!-- Bootstrap JS bundled with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <!-- Datepicker: https://github.com/mymth/vanillajs-datepicker -->
-    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.2/dist/js/datepicker-full.min.js"></script>
-    <script>
-        const elem = document.getElementById('reservation-date-picker');
-        const rangepicker = new DateRangePicker(elem, {
-         buttonClass: 'btn btn-outline-primary mx-auto my-2',
-         clearBtn: true,
-         todayBtn: true,
-         todayBtnMode: 1,
-         format: 'yyyy-mm-dd',
-        }); 
-    </script>
-
     <!-- Alerts - Notie: https://github.com/jaredreich/notie -->
     <script src="https://unpkg.com/notie"></script>
     <script>
@@ -126,30 +113,6 @@
     <script>
         // Declare attention variable.
         let attention = Prompt();
-        
-        // Test button.
-        document.getElementById("alert-test").addEventListener("click", function() {
-            // notieAlert("This is my message", 'success')         
-            // sweetAlert("Good Job!","<em>You did it!</em>","success","Ok")
-
-            // attention.toast({msg: "Hello you!", icon: "success"});
-            // attention.error({title: "Fail", msg: "Such proud", footer: "<a href>Why do I have this issue?</a>"});
-
-            let html = 
-                `<div class="my-3">
-                    <form id="check-availability-form" action="" method="POST" novalidate class="needs-validation" autocomplete="off">
-                        <div class="form-row" id="reservation-date-modal">
-                            <div class="input-group">
-                                <span class="input-group-text">DATES</span>
-                                <input disabled required type="text" aria-label="Arrival" name="start" id="start" class="form-control" placeholder="Arrival">
-                                <input disabled required type="text" aria-label="Departure" name="end" id="end" class="form-control" placeholder="Departure">
-                            </div>
-                        </div>
-                    </form>
-                </div>`          
-
-            attention.custom({title: "SELECT DATES", msg: html});
-        })
 
         // Prompt function.
         function Prompt() {
@@ -242,8 +205,22 @@
                 })
 
                 if (formValues) {
-                    Swal.fire(JSON.stringify(formValues))
+                    if (formValues.dismiss !== Swal.DismissReason.cancel) {
+                        if (formValues.value !== "") {
+                            if (c.callback !== undefined) {
+                                c.callback(formValues);
+                            }
+                        } else {
+                            c.callback(false);
+                        }
+                    } else {
+                        c.callback(false);
+                    }
                 }
+
+                // if (formValues) {
+                //     Swal.fire(JSON.stringify(formValues))
+                // }
             }
             
             return {
@@ -254,32 +231,6 @@
             }
         }        
     </script>
-
-    <!-- <script>
-      // Initialize and add the map
-      function initMap() {
-        // The location of Uluru
-        const uluru = { lat: 32.77883386575733, lng: -79.93615340966723 };
-        // The map, centered at Uluru
-        const map = new google.maps.Map(document.getElementById("map"), {
-          mapId: '9cd00495aa9432f3',
-          zoom: 13,
-          center: uluru,
-          
-          
-        });
-        // The marker, positioned at Uluru
-        const marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-        });
-      }
-    </script> -->
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <!-- <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbrXuO9v8z-H55Src0fclNCvIJ9LTQlmY&callback=initMap&libraries=&v=beta&map_ids=9cd00495aa9432f3">
-    </script> -->
     
     <!-- JAVASCRIPT END -->
 

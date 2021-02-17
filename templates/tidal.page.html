@@ -1,7 +1,6 @@
 {{template "base" .}}
 
 {{define "content"}}
-
 <div class="container">
     <div class="row text-center mt-5">
         <div class="col">
@@ -17,7 +16,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="d-grid col-lg-4 col-md-6 mt-4 mb-4">
-            <button class="btn btn-primary btn-lg" type="button">CHECK AVAILABILITY</button>
+            <button id="check-availability-btn" class="btn btn-primary btn-lg" type="button">CHECK AVAILABILITY</button>
         </div>
     </div>
     <div class="row justify-content-center text-center mb-5">
@@ -81,7 +80,82 @@
         </div>
     </div>
 </div>
+{{end}}
 
-    
+{{define "js"}}
+    <!-- Availability -->
 
+    <!-- Datepicker: https://github.com/mymth/vanillajs-datepicker -->
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.2/dist/js/datepicker-full.min.js"></script>
+    <script>
+        const elem = document.getElementById('reservation-date-picker');
+        const rangepicker = new DateRangePicker(elem, {
+         buttonClass: 'btn btn-outline-primary mx-auto my-2',
+         clearBtn: true,
+         todayBtn: true,
+         todayBtnMode: 1,
+         format: 'yyyy-mm-dd',
+         autohide: true,
+        }); 
+    </script>
+
+    <script>
+    // Search availability button.
+        document.getElementById("check-availability-btn").addEventListener("click", function() {
+            let html = 
+                `<div class="my-3">
+                    <form id="check-availability-form" action="" method="POST" novalidate class="needs-validation" autocomplete="off">
+                        <div class="form-row" id="reservation-date-modal">
+                            <div class="input-group">
+                                <input disabled required type="text" aria-label="Arrival" name="start" id="start" class="form-control" placeholder="Arrival">
+                                <input disabled required type="text" aria-label="Departure" name="end" id="end" class="form-control" placeholder="Departure">
+                            </div>
+                        </div>
+                    </form>
+                </div>`          
+
+            attention.custom({
+                title: "SELECT DATES", 
+                msg: html,
+                callback: function(formValues) {
+                    console.log("called");
+
+                    fetch('/search-availability-json')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        console.log(data.ok);
+                        console.log(data.message);
+                    })
+                }       
+            });
+        })
+    </script>
+
+    <!-- Google Maps JavaScript API -->
+    <!-- <script>
+      // Initialize and add the map
+      function initMap() {
+        // The location of Uluru
+        const uluru = { lat: 32.77883386575733, lng: -79.93615340966723 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("map"), {
+          mapId: '9cd00495aa9432f3',
+          zoom: 13,
+          center: uluru,
+          
+          
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+      }
+    </script> -->
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbrXuO9v8z-H55Src0fclNCvIJ9LTQlmY&callback=initMap&libraries=&v=beta&map_ids=9cd00495aa9432f3">
+    </script> -->
 {{end}}
