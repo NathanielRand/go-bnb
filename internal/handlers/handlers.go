@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/NathanielRand/go-bnb/pkg/config"
-	"github.com/NathanielRand/go-bnb/pkg/models"
-	"github.com/NathanielRand/go-bnb/pkg/render"
+	"github.com/NathanielRand/go-bnb/internal/config"
+	"github.com/NathanielRand/go-bnb/internal/models"
+	"github.com/NathanielRand/go-bnb/internal/render"
 )
 
 // Repo is the repository used by the handlers.

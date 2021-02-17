@@ -3,8 +3,8 @@ package main
 import (
 	"net/http"
 
-	"github.com/NathanielRand/go-bnb/pkg/config"
-	"github.com/NathanielRand/go-bnb/pkg/handlers"
+	"github.com/NathanielRand/go-bnb/internal/config"
+	"github.com/NathanielRand/go-bnb/internal/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 )
