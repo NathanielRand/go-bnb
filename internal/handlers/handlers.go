@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	"github.com/NathanielRand/go-bnb/internal/config"
+	"github.com/NathanielRand/go-bnb/internal/forms"
 	"github.com/NathanielRand/go-bnb/internal/models"
 	"github.com/NathanielRand/go-bnb/internal/render"
 )
@@ -60,14 +61,6 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "contact.page.html", &models.TemplateData{})
 }
 
-// MakeReservation function is the handler for the about page.
-func (m *Repository) MakeReservation(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
-
-	render.RenderTemplate(w, r, "make-reservation.page.html", &models.TemplateData{})
-}
-
 // Availability function is the handler for the search availability page.
 func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
@@ -76,7 +69,7 @@ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "search-availability.page.html", &models.TemplateData{})
 }
 
-// PostAvailability function is the handler for the search availability page.
+// PostAvailability function is the handler for the post availability page.
 func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
@@ -105,6 +98,85 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 	log.Println(string(out))
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
+}
+
+// MakeReservation function is the handler for the make reservation page.
+func (m *Repository) MakeReservation(w http.ResponseWriter, r *http.Request) {
+	remoteIP := r.RemoteAddr
+	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
+
+	var emptyResservation models.Reservation
+	data := make(map[string]interface{})
+	data["reservation"] = emptyResservation
+
+	render.RenderTemplate(w, r, "make-reservation.page.html", &models.TemplateData{
+		Form: forms.New(nil),
+		Data: data,
+	})
+}
+
+// PostReservation function is the handler for the post reservation page.
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	reservation := models.Reservation{
+		FirstName: r.Form.Get("first_name"),
+		LastName:  r.Form.Get("last_name"),
+		Email:     r.Form.Get("email"),
+		Phone:     r.Form.Get("phone"),
+	}
+
+	form := forms.New(r.PostForm)
+	form.Required("first_name", "last_name", "email", "phone")
+	// Check first name is at least 2 characters.
+	form.MinLength("first_name", 2, r)
+	// Check last name is at least 2 characters.
+	form.MinLength("last_name", 2, r)
+	// Check email is at least 4 characters.
+	form.MinLength("phone", 7, r)
+	// Check email is valid format.
+	form.IsEmail("email")
+
+	if !form.Valid() {
+		data := make(map[string]interface{})
+		data["reservation"] = reservation
+
+		render.RenderTemplate(w, r, "make-reservation.page.html", &models.TemplateData{
+			Form: form,
+			Data: data,
+		})
+		return
+	}
+
+	// Throw reservation object into the session to be pulled out in the
+	// reservation summary page and send it to the template to be displayed.
+	m.App.Session.Put(r.Context(), "reservation", reservation)
+
+	// Redirec to reservation sumary page.
+	http.Redirect(w, r, "/reservation-summary", http.StatusSeeOther)
+}
+
+// ReservationSummary function is the handler for the reservation summary page.
+func (m *Repository) ReservationSummary(w http.ResponseWriter, r *http.Request) {
+	remoteIP := r.RemoteAddr
+	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
+
+	reservation, ok := m.App.Session.Get(r.Context(), "reservation").(models.Reservation)
+	if !ok {
+		log.Println("cannot get item from session")
+		return
+	}
+
+	data := make(map[string]interface{})
+	data["reservation"] = reservation
+
+	render.RenderTemplate(w, r, "reservation-summary.page.html", &models.TemplateData{
+		Data: data,
+	})
 }
 
 // Tidal function is the handler for the tidal page.

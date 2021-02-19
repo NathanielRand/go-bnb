@@ -31,6 +31,8 @@ func routes(app *config.AppConfig) http.Handler {
 
 	// Routes - Reserve
 	mux.Get("/make-reservation", handlers.Repo.MakeReservation)
+	mux.Post("/make-reservation", handlers.Repo.PostReservation)
+	mux.Get("/reservation-summary", handlers.Repo.ReservationSummary)
 	mux.Get("/reserve-cliffside", handlers.Repo.Cliffside)
 
 	// Routes - Search Availability
