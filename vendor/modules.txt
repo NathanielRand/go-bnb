@@ -6,6 +6,6 @@ github.com/alexedwards/scs/v2/memstore
 ## explicit
 github.com/go-chi/chi
 github.com/go-chi/chi/middleware
-# github.com/justinas/nosurf v1.1.1
+# github.com/justinas/nosurf v1.2.0
 ## explicit
 github.com/justinas/nosurf
